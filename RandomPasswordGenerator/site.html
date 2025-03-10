@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="flex-box">
+    <div  class="your-new-password-class">
+        <p id="your-new-password">
+            Your Pasword
+        </p>
+        <button onclick="copyMe()" class="coppybutton">
+            <img  src="imges/img-icon-copy-@3x.png" alt="">
+        </button>
+    </div>
+    <div class="main">
+        <div class="niewiem">
+            <div class="info-uno">
+                Pasword Options
+            </div>
+            <div class="Password-options-div">
+                <div class="length-option">
+                    <input id="input-number" class="number-box" type="number" min="1" max="40" value="12">
+                    <input type="range" class="input-range" min="1" max="40">
+                </div>
+                <div>
+                    <div class="chechbox-option">
+                        <input id="Lowercase-chceckbox" class="check" type="checkbox"> <p>Lowercase</p>
+                    </div>
+                    <div class="chechbox-option">
+                        <input id="Uppercase-checkbox" class="check" type="checkbox"> <p>Uppercase</p>
+                    </div>
+                    <div class="chechbox-option">
+                        <input id="number-chceckbox" class="check" type="checkbox"> <p>Numbers</p>
+                    </div>
+                    <div class="chechbox-option">
+                        <input id="symbol-checkbox" class="check" type="checkbox"> <p>Symbols</p>
+                    </div>
+                </div>
+            </div>
+            <div class="buttondiv">
+                <button class="generete-button" id="gen-button"> Generate </button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
