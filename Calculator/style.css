@@ -1,0 +1,39 @@
+.maindiv{
+    display: flex;
+    flex-direction: column;
+    width: 420px;
+    padding: 10px;
+    background-color: hsl(0, 0%, 15%);
+    border-radius: 14px;
+    
+}
+.button-box{
+    display: grid;
+    grid-template-columns: repeat(4,  1fr);
+    row-gap: 10px;
+    width: 100%;
+}
+button{
+    width: 100px;
+    height: 100px;
+    border: none;
+    border-radius: 50%;
+    background-color: hsl(0, 0%, 30%);
+    color: #FBC02D;
+    font-size: 36px;
+    font-weight: bold;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+.input-text{
+    padding: 20px;
+    margin-bottom: 10px;
+    overflow: scroll;
+    background-color: hsl(0, 0%, 30%);
+    border: none;
+    color: #FBC02D;
+    font-size: 24px;
+
+}
+button{
+    cursor: pointer;
+}
