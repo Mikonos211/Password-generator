@@ -1,0 +1,103 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.flex-box{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.your-new-password-class{
+    padding: 20px 40px;
+    padding-bottom: 10px;
+    width: 400px;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border-bottom-style: solid;
+    border-bottom-width: 5px;
+    border-bottom-color: #d71340;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+button, input{
+    cursor: pointer;
+}
+
+.Password-options-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+
+}
+.check{
+    accent-color: #d71340;
+}
+.chechbox-option{
+    display: flex;
+}
+
+img{
+    width: 15px;
+      
+}
+.coppybutton{
+    background-color: white;
+    border: none;        
+}
+p{
+    padding: 0;
+    margin: 0;
+}
+.number-box{
+    width: 36px;
+    padding: 10px;
+    text-align: center;
+
+}
+.input-range{
+    accent-color: #d71340;
+}
+.length-option{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+.generete-button{
+    background-color: #d71340;
+    padding: 12px 36px;
+    border-radius: 10px;
+    width: 100%;
+    border: none;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.generete-button:hover {
+    background: #a10f30;
+}
+.info-uno{
+    font-size: 26px;
+    border-bottom: lightgrey;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    margin-bottom: 10px;
+}
+.buttondiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

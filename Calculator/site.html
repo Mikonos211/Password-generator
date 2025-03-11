@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .maindiv{
+            display: flex;
+            flex-direction: column;
+            width: 420px;
+            padding: 10px;
+            background-color: hsl(0, 0%, 15%);
+            border-radius: 14px;
+            
+        }
+        .button-box{
+            display: grid;
+            grid-template-columns: repeat(4,  1fr);
+            row-gap: 10px;
+            width: 100%;
+        }
+        button{
+            width: 100px;
+            height: 100px;
+            border: none;
+            border-radius: 50%;
+            background-color: hsl(0, 0%, 30%);
+            color: #FBC02D;
+            font-size: 36px;
+            font-weight: bold;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .input-text{
+            padding: 20px;
+            margin-bottom: 10px;
+            overflow: scroll;
+            background-color: hsl(0, 0%, 30%);
+            border: none;
+            color: #FBC02D;
+            font-size: 24px;
+
+        }
+        button{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="maindiv" id="calculator">
+        <input class="input-text" id="input-id" type="text" readonly>
+        <div class="button-box" id="keys">
+            <button onclick="addToInput('+')">+</button>
+            <button onclick="addToInput('7')">7</button>
+            <button onclick="addToInput('8')">8</button>
+            <button onclick="addToInput('9')">9</button>
+            <button onclick="addToInput('-')">-</button>
+            <button onclick="addToInput('4')">4</button>
+            <button onclick="addToInput('5')">5</button>
+            <button onclick="addToInput('6')">6</button>
+            <button onclick="addToInput('*')">*</button>
+            <button onclick="addToInput('1')">1</button>
+            <button onclick="addToInput('2')">2</button>
+            <button onclick="addToInput('3')">3</button>
+            <button onclick="addToInput('/')">/</button>
+            <button onclick="addToInput('0')">0</button>
+            <button onclick="addToInput('.')">.</button>
+            <button onclick="CalculateByButton('=')">=</button>
+            <button onclick="ClearInput()">C</button>
+        </div>
+    </div>
+
+<script>
+    function checkIfToCalculate(value) {
+        let parts = value.split(" ");
+        let operators = "+-*/";
+        
+        if (parts.length >= 3 && operators.includes(parts[1])) {
+            return Calculate(parts);
+        }
+        return null;
+    }
+
+    function addToInput(whatToAdd) {
+        let inputValue = document.getElementById("input-id").value;
+        let lastCharacter = inputValue[inputValue.length - 1];
+
+        let operators = "+-*/";
+
+        let result = checkIfToCalculate(inputValue);
+        if (result !== null && operators.includes(whatToAdd)) {
+            inputValue = result; 
+        }
+
+        if (operators.includes(whatToAdd)) {
+            if (operators.includes(lastCharacter)) {
+                alert("Nie możesz dodać kolejnego operatora.");
+                return;
+            }
+            inputValue += " " + whatToAdd;
+        } else {
+            if (operators.includes(lastCharacter)) {
+                inputValue += " " + whatToAdd;
+            } else {
+                inputValue += whatToAdd;
+            }
+        }
+
+        document.getElementById("input-id").value = inputValue;
+    }
+
+    function ClearInput() {
+        document.getElementById("input-id").value = '';
+    }
+       function CalculateByButton(){
+            let inputValue = document.getElementById("input-id").value;
+
+            let result;
+
+            let parts = inputValue.split(" ");
+
+            let firstDigit = parseFloat(parts[0]) ;
+            let oparator = parts[1];
+            let secondDigit = parseFloat(parts[2]) ;
+            
+            switch ( oparator ) {
+                case '+': 
+                    result = firstDigit + secondDigit;
+                    break;
+                case '-':
+                    result = firstDigit - secondDigit;
+                    break;
+
+                case '*':
+                    result = firstDigit * secondDigit;
+                    break;
+
+                case '/':
+                    if( secondDigit === 0){
+                        alert("nie mozna dzeielic przez 0")
+                        return;
+                    }
+                    result = firstDigit / secondDigit;
+                    break;
+                default:
+                    return;                
+            }
+            document.getElementById("input-id").value = result;
+        }
+
+    function Calculate(parts = null) {
+        let inputValue = document.getElementById("input-id").value;
+        
+        if (!parts) {
+            parts = inputValue.split(" ");
+        }
+
+        if (parts.length < 3) {
+            return null;
+        }
+
+        let firstDigit = parseFloat(parts[0]);
+        let operator = parts[1];
+        let secondDigit = parseFloat(parts[2]);
+
+        let result;
+        switch (operator) {
+            case '+':
+                result = firstDigit + secondDigit;
+                break;
+            case '-':
+                result = firstDigit - secondDigit;
+                break;
+            case '*':
+                result = firstDigit * secondDigit;
+                break;
+            case '/':
+                if (secondDigit === 0) {
+                    alert("Nie można dzielić przez 0");
+                    return null;
+                }
+                result = firstDigit / secondDigit;
+                break;
+            default:
+                return null;
+        }
+        return result;
+    }
+</script>
+
+
+</body>
+</html>
