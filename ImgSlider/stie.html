@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       .slider{
+    position: relative;
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    }
+    .slider img{
+        width: 100%;
+        display: none;
+    }
+    img.displaySlide{
+        display: block;
+        animation-name: fade ;
+        animation-duration: 1.5s;
+    }
+    .slider button{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+    .prev{
+        left: 0;
+    }
+    .next{
+        right: 0;
+    }
+    @keyframes fade {
+        from {opacity: .5}
+        to {opacity: 1}
+    }
+
+
+    .button {
+    position: relative;
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    color: #333;
+    text-decoration: none;
+    border: 2px solid #333;
+    background: transparent;
+    overflow: hidden;
+    transition: color 0.3s ease;
+}
+
+.button::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #333;
+    bottom: 0;
+    left: 50%;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.button:hover::after {
+    transform: scaleX(1);
+    transform-origin: center;
+}
+
+
+    </style>
+</head>
+<body>
+
+    <div class="slider">
+        <div class="slides">
+            <img class="slide" src="gadzety_2023__desktop.jpg" alt="Image #1">
+            <img class="slide" src="ETN_DESKTOP.jpg" alt="Image #2">
+        </div>
+        <button class="prev" onclick="prevSlide()">&#10094</button>
+        <button class="next" onclick="nextSlide()">&#10095</button>
+    </div>
+
+    <button class="button">Hover me</button>
+   
+    
+    <script>
+
+        const slides = document.querySelectorAll(".slides img");
+        let slideIndex = 0;
+        let intervalid = null;
+
+        document.addEventListener("DOMContentLoaded", initializeSlider);
+
+        function initializeSlider(){
+
+            if(slides.length > 0){
+                slides[slideIndex].classList.add("displaySlide");
+                intervalid = setInterval(nextSlide, 5000);
+            }
+
+        }
+        function showSlide(index){
+
+            if(index >= slides.length){
+                slideIndex = 0;
+            }else if (index < 0 ){
+                slideIndex = slides.length - 1;
+            }
+
+
+            slides.forEach(slide => {
+                slide.classList.remove("displaySlide")
+            });
+
+            slides[slideIndex].classList.add("displaySlide");
+
+        }
+        function prevSlide(){
+            clearInterval(intervalid);
+            slideIndex--;
+            showSlide(slideIndex);
+
+        }
+        function nextSlide(){
+            clearInterval(intervalid);
+
+            slideIndex++;
+            showSlide(slideIndex);
+        }
+
+
+
+    </script>
+</body>
+</html>
